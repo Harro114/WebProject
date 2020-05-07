@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=10">
+    <title>Добрый чат</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="content-wrapper">
+        <header class="header">
+            <p style="font-size: 30px; margin: 0; padding: 10px 1em;">Добрый чат.</p>
+        </header>
+
+        <div class="container clearfix">
+            <h1>Авторизация пользователя</h1>
+            <h1>1 - 15 каналы всегда без пароля</h1>
+            <main class="content">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    {{ form.name.label }}: {{ form.name() }} {% for error in form.name.errors %}{{ error }}{% endfor %}<br>
+                    <br>
+                    {{ form.room.label }}: {{ form.room() }} {% for error in form.room.errors %}{{ error }}{% endfor %}<br>
+                    <br>
+                    {{ form.submit() }}
+                </form>
+                <h1>Или войти/зарегистрироваться в приватной комнате</h1>
+                <br>
+                <input value="Создать приватную комнату" type="button" onclick="location.href='rprivat'" />
+                <br><br>
+                <input value="Войти в приватную комнату" type="button" onclick="location.href='lprivat'" />
+            </main>
+        </div>
+
+        <footer class="footer">
+            <p style="font-size: 30px; margin: 0; padding: 10px 1em;">Власов Максим для Для Яндекс.Лицея</p>
+        </footer>
+    </div>
+</body>
+</html>

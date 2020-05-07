@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=10">
+    <title>Добрый чат</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="content-wrapper">
+        <header class="header">
+            <p style="font-size: 30px; margin: 0; padding: 10px 1em;">Добрый чат.</p>
+        </header>
+
+        <div class="container clearfix">
+            <h1>1 - 15 каналы всегда без пароля</h1>
+            <main class="content">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    {{ form.lpname.label }}: {{ form.lpname() }} {% for error in form.lpname.errors %}{{ error }}{% endfor %}<br>
+                    <br>
+                    {{ form.lproom.label }}: {{ form.lproom() }} {% for error in form.lproom.errors %}{{ error }}{% endfor %}<br>
+                    <br>
+                    {{ form.lppassword.label }}: {{ form.lppassword() }} {% for error in form.lppassword.errors %}{{ error }}{% endfor %}<br>
+                    <br>
+                    {{ form.llogpriv() }}
+                </form>
+                {{message}}
+            </main>
+        </div>
+
+        <footer class="footer">
+            <p style="font-size: 30px; margin: 0; padding: 10px 1em;">Власов Максим для Для Яндекс.Лицея</p>
+        </footer>
+    </div>
+</body>
+</html>
