@@ -1,30 +1,31 @@
-from flask_wtf import Form
+from flask_wtf import FlaskForm
+
+from wtforms.validators import DataRequired
 from wtforms.fields import StringField, SubmitField
-from wtforms.validators import Required
 import sqlalchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.main.db_session import SqlAlchemyBase
 
 
-class LoginForm(Form):
+class LoginForm(FlaskForm):
     """Форма входа в комнату"""
-    name = StringField('Никнейм', validators=[Required()])
-    room = StringField('Комната', validators=[Required()])
+    name = StringField('Никнейм', validators=[DataRequired()])
+    room = StringField('Комната', validators=[DataRequired()])
     submit = SubmitField('Войти в комнату')
 
 
-class rPrivatForm(Form):
-    rpname = StringField('Никнейм', validators=[Required()])
-    rproom = StringField('Комната', validators=[Required()])
-    rppassword = StringField('Пароль', validators=[Required()])
+class rPrivatForm(FlaskForm):
+    rpname = StringField('Никнейм', validators=[DataRequired()])
+    rproom = StringField('Комната', validators=[DataRequired()])
+    rppassword = StringField('Пароль', validators=[DataRequired()])
     rregpriv = SubmitField('Создать приватную комнату')
     rlogpriv = SubmitField('Войти в приватную комнату')
 
 
-class lPrivatForm(Form):
-    lpname = StringField('Никнейм', validators=[Required()])
-    lproom = StringField('Комната', validators=[Required()])
-    lppassword = StringField('Пароль', validators=[Required()])
+class lPrivatForm(FlaskForm):
+    lpname = StringField('Никнейм', validators=[DataRequired()])
+    lproom = StringField('Комната', validators=[DataRequired()])
+    lppassword = StringField('Пароль', validators=[DataRequired()])
     lregpriv = SubmitField('Создать приватную комнату')
     llogpriv = SubmitField('Войти в приватную комнату')
 
